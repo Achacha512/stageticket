@@ -13,33 +13,58 @@
 ActiveRecord::Schema.define(version: 2021_12_16_093316) do
 
   create_table "actors", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "login_name", null: false
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "admins", force: :cascade do |t|
+    t.string "login_name", null: false
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "categories", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "reservations", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "stage_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["stage_id"], name: "index_reservations_on_stage_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
   create_table "seats", force: :cascade do |t|
+    t.integer "reservation_id", null: false
+    t.integer "stage_id", null: false
+    t.string "seat_type", null: false
+    t.integer "seat_price", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["reservation_id"], name: "index_seats_on_reservation_id"
+    t.index ["stage_id"], name: "index_seats_on_stage_id"
   end
 
   create_table "stages", force: :cascade do |t|
+    t.integer "actor_id", null: false
+    t.string "title", null: false
+    t.datetime "date", null: false
+    t.integer "time", null: false
+    t.string "text", null: false
+    t.integer "status", default: 1
+    t.integer "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["actor_id"], name: "index_stages_on_actor_id"
+    t.index ["category_id"], name: "index_stages_on_category_id"
   end
 
   create_table "users", force: :cascade do |t|
