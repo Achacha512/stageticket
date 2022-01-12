@@ -3,7 +3,7 @@ class CreateStages < ActiveRecord::Migration[5.2]
     create_table :stages do |t|
       t.references :actor, null: false
       t.string :title , null: false
-      t.datetime :date , null: false
+      t.date :date , null: false
       t.integer :time , null: false
       t.string :text , null: false
       t.integer :status , default:1#申請中

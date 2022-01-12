@@ -10,6 +10,23 @@
   </head>
 
   <body>
-    <%= yield %>
+  <div id="container">
+    <header>
+      <%= render "shared/header" %>
+    </header>
+    <main>
+      <% if flash.notice %>
+        <p class="notice"><%= flash.notice %></p>
+      <% end %>
+
+      <%= yield %>
+    </main>
+    <aside id="sidebar">
+      <%= render "shared/sidebar" %>
+    </aside>
+    <footer>
+      <%= render "shared/footer" %>
+    </footer>
+  </div>
   </body>
 </html>

@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2021_12_16_093316) do
   create_table "stages", force: :cascade do |t|
     t.integer "actor_id", null: false
     t.string "title", null: false
-    t.datetime "date", null: false
+    t.date "date", null: false
     t.integer "time", null: false
     t.string "text", null: false
     t.integer "status", default: 1

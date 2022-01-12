@@ -1,1 +1,56 @@
-<h1>公演一覧</h1>
+<table class="attr">
+<%= form_tag :search_stages, method: :get, class: "search" do %>
+  <tr>
+    <th>名目</th>
+    <td><%= text_field_tag "title", params[:title] %></td>
+  </tr>
+  <tr>
+    <th>公演者名</th>
+    <td><%= text_field_tag "actor", params[:actor] %></td>
+  </tr>
+  <tr>
+    <th>日付</th>
+    <td><%= date_field_tag :date, params[:date] %></td>
+  </tr>
+  <tr>
+    <th>時間</th>
+    <td><%= select_tag "time", options_for_select(%w[なし 午前の部 午後の部]) %></td>
+  </tr>
+  <tr>
+    <th>カテゴリー</th>
+    <td><%= select_tag "category", options_for_select(%w[なし 恋愛系 ファンタジー お笑い系 ミュージカル オペラ]) %></td>
+  </tr>
+  <%= submit_tag "検索" %>
+<% end %>
+</table>
+
+
+<h1>公演者一覧</h1>
+
+<% if @stages.present? %>
+
+  <table class="list">
+    <thead>
+    <tr>
+      <th>公演名</th>
+      <th>公演者名</th>
+      <th>公演日</th>
+      <th>公演時間</th>
+      <th>カテゴリー</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @stages.each do |stage| %>
+      <tr>
+        <td style="text-align: right"><%= link_to stage.title, stage %></td>
+        <td><%= stage.actor.name %></td>
+        <td><%= stage.date %></td>
+        <td><%= stage.time == 1 ? "午前の部" : "午後の部" %></td>
+        <td><%= stage.category.name %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>公演情報がありません。</p>
+<% end %>
