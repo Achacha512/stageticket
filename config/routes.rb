@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   resources :actors
   resource :adminsessions
   resource :admin
+  resource :password
 end

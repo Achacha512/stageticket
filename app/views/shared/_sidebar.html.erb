@@ -1,22 +1,23 @@
-<%# if current_admin || current_actor || current_user %>
-<!--  <h2>マイページはこちら</h2>-->
-  <%#= menu_link_to "マイページ", @account %>
-<%# else %>
 <% if current_user %>
-<%= current_user.name %>
-  <%= link_to "ユーザーログアウト", :usersessions, method: :delete, data: {confirm: "ログアウトしますか?"} %>
-  <% end %>
+  <%= link_to current_user.name, current_user %><br>
+  <%= link_to "ユーザーログアウト", :usersessions, method: :delete, data: { confirm: "ログアウトしますか?" } %><br>
+<% end %>
 <% if current_actor %>
-  <%= current_actor.name %>
-  <%= link_to "公演者ログアウト", :actorsessions, method: :delete, data: {confirm: "ログアウトしますか?"} %>
+  <%= link_to current_actor.name, current_actor %><br>
+  <%= link_to "公演者ログアウト", :actorsessions, method: :delete, data: { confirm: "ログアウトしますか?" } %><br>
 <% end %>
 <% if current_admin %>
-  管理者
-  <%= link_to "ユーザーログアウト", :adminsessions, method: :delete, data: {confirm: "ログアウトしますか?"} %>
+  <%= link_to "管理者", current_admin %><br>
+  <%= link_to "管理者ログアウト", :adminsessions, method: :delete, data: { confirm: "ログアウトしますか?" } %><br>
 <% end %>
+
+<% unless current_admin || current_actor || current_user %>
   <h2>ログインはこちら</h2>
   <ul>
-    <%= link_to "ユーザーログイン", user_path(1) %>
-    <%= link_to "公演者ログイン", actor_path(1) %>
+    <%= link_to "ユーザーログイン", user_path(1) %><br>
+    <%= link_to "公演者ログイン", actor_path(1) %><br>
     <%= link_to "管理者ログイン", admin_path %>
   </ul>
+<% end %>
+
+<%= link_to "ユーザー新規登録",:new_user %>
