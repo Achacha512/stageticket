@@ -3,7 +3,7 @@ login_names = %w(Kei Taro Kou Atu Gaku)
 password = "stage"
 
 0.upto(4) do |idx|
-  User.create(
+  User.create!(
     name: names[idx],
     login_name: login_names[idx],
     password: password,
