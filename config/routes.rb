@@ -5,10 +5,13 @@ Rails.application.routes.draw do
   end
 
   resource :usersessions
-  resources :users
+  resources :users do
+    resources :reservations
+  end
   resource :actorsessions
   resources :actors
   resource :adminsessions
   resource :admin
   resource :password
+
 end

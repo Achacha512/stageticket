@@ -1,7 +1,7 @@
 <h1>マイページ</h1>
 <h2>名前：<%=@user.name %></h2>
 <h2>ログイン名：<%= @user.login_name %></h2>
-<h2>予約一覧</h2>
+<h2><%=link_to "予約一覧" , [@user, :reservations] %></h2>
 <h2><%=link_to "アカウント編集" , [:edit , @user] %></h2>
 <h2><%=link_to "パスワード編集" , :edit_password %></h2>
 <h2><%=link_to "退会" , @user, method: :delete, data: { confirm: "本当に退会しますか？"} %></h2>

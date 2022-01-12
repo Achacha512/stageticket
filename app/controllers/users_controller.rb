@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :user_login_required, only: [:show]
+
   def show
     @user = current_user
   end
@@ -19,6 +20,17 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    @user.assign_attributes(params[:user])
+    if @user.save
+      redirect_to @user, notice: "会員情報を変更しました"
+    else
+      render edit
+    end
+
   end
 
   def destroy
