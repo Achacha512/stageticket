@@ -6,7 +6,7 @@ class CreateStages < ActiveRecord::Migration[5.2]
       t.datetime :date , null: false
       t.integer :time , null: false
       t.string :text , null: false
-      t.integer :status , default:1
+      t.integer :status , default:1#申請中
       t.references :category, null: false
 
       t.timestamps

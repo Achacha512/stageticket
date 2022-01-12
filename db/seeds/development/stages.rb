@@ -3,16 +3,17 @@ titles = %w[ロミオとジュリエット ライオンキング オペラ座の
 1.upto(6) do |idx|
   actor = Actor.find(idx)
   category = Category.find(rand(1..5))
+  status = [1,2,3]
 
-  0.upto(1) do |idx|
-    Stage.create(
+  0.upto(2) do |idx|
+    Stage.create!(
       date: "#{rand(2021..2024)}-#{rand(1..12)}-#{rand(1..29)}",
       title: titles[idx],
       time: rand(1..2),
-      status: rand(1..3),
+      status: status[idx],
       text: "本文本文本文本文本文本文本文本文本文本文本文本文",
-      actor_id: actor,
-      category_id: category
+      actor_id: actor.id,
+      category_id: category.id
     )
   end
 
