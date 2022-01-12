@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ログイン</title>
+    <%= stylesheet_link_tag "application", media: "all" %>
+  </head>
+  <body>
+    <div id="container">
+      <header>
+        <nav class="menubar">
+          <a href="/">TOP</a>
+        </nav>
+      </header>
+      <main>
+        <%= yield %>
+      </main>
+      <footer>
+        <%= render "shared/footer" %>
+      </footer>
+    </div>
+  </body>
+</html>

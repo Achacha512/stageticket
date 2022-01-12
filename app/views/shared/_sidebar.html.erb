@@ -1,0 +1,22 @@
+<%# if current_admin || current_actor || current_user %>
+<!--  <h2>マイページはこちら</h2>-->
+  <%#= menu_link_to "マイページ", @account %>
+<%# else %>
+<% if current_user %>
+<%= current_user.name %>
+  <%= link_to "ユーザーログアウト", :usersessions, method: :delete, data: {confirm: "ログアウトしますか?"} %>
+  <% end %>
+<% if current_actor %>
+  <%= current_actor.name %>
+  <%= link_to "公演者ログアウト", :actorsessions, method: :delete, data: {confirm: "ログアウトしますか?"} %>
+<% end %>
+<% if current_admin %>
+  管理者
+  <%= link_to "ユーザーログアウト", :adminsessions, method: :delete, data: {confirm: "ログアウトしますか?"} %>
+<% end %>
+  <h2>ログインはこちら</h2>
+  <ul>
+    <%= link_to "ユーザーログイン", user_path(1) %>
+    <%= link_to "公演者ログイン", actor_path(1) %>
+    <%= link_to "管理者ログイン", admin_path %>
+  </ul>
