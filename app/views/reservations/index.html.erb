@@ -17,7 +17,7 @@
         <%= reservation.id %>
       </td>
       <td>
-        <%= link_to reservation.stage.title, [current_user, reservation] %>
+        <%= link_to reservation.stage.title, [reservation.user, reservation] %>
       </td>
       <td>
         <%= reservation.stage.actor.name %>

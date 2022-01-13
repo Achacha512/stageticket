@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       get :admin_stage_show
       get :actor_stage_show
     end
+    resources :reservations
   end
 
   resource :usersessions
