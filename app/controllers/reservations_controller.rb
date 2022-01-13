@@ -59,9 +59,15 @@ class ReservationsController < ApplicationController
 
   def destroy
     @reservation = current_user.reservations.find(params[:id])
-
+    if @reservation.stage.date >= Date.current.days_since(2)
+      @reservation.destroy
+      redirect_to "/users/#{current_user.id}/reservations", notice: "キャンセルしました"
+    else
+      redirect_to :user_reservation_path, notice: "キャンセル期間が過ぎているのでキャンセルできませんでした"
+    end
   end
 end
+
 
 
 

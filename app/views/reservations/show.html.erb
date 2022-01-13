@@ -54,3 +54,4 @@
 </table>
 
 <%= link_to "TOP", :root %>
+<%= link_to "予約をキャンセルする" , [current_user,@reservation], method: :delete, data:{confirm: "本当にキャンセルしますか？"} %>
