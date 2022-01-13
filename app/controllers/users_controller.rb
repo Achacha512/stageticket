@@ -6,12 +6,17 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
+    if cookies.signed[:actor_id].nil? && cookies.signed[:admin_id].nil? && cookies.signed[:user_id].nil?
+      @user = User.new
+    else
+      redirect_to :root, notice: "すでにログインしているアカウントがあるため新規登録できません"
+    end
   end
 
   def create
     @user = User.new(params[:user])
     if @user.save!
+      cookies.signed[:user_id] = @user.id
       redirect_to :root, notice: "会員登録を完了しました。"
     else
       render "new"
@@ -36,7 +41,9 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
+    cookies.delete(name: user_id)
     redirect_to :root, notice: "退会しました。"
   end
 
 end
+
