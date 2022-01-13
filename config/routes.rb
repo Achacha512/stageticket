@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   root "stages#index"
   resources :stages do
     get "search", on: :collection
+    member do
+      get :admin_stage_show
+      get :actor_stage_show
+    end
   end
 
   resource :usersessions
@@ -13,9 +17,13 @@ Rails.application.routes.draw do
   resources :actors do
     get "actor_request_stages", on: :collection
     get "actor_past_stages", on: :collection
+
   end
   resource :adminsessions
-  resource :admin
+  resource :admin do
+    get "admin_request_stages", on: :collection
+    get "admin_past_stages", on: :collection
+  end
   resource :password
 
 end
