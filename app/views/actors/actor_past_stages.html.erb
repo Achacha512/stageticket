@@ -5,7 +5,7 @@
     <table class="attr">
       <tr>
         <th>タイトル</th>
-        <td><%= stage.title %></td>
+        <td><%= link_to stage.title , "/stages/#{stage.id}/actor_stage_show" %></td>
       </tr>
       <tr>
         <th>公演者名</th>
@@ -42,7 +42,7 @@
     <table class="attr">
       <tr>
         <th>タイトル</th>
-        <td><%= stage.title %></td>
+        <td><%= link_to stage.title , "/stages/#{stage.id}/actor_stage_show" %></td>
       </tr>
       <tr>
         <th>公演者名</th>

@@ -35,5 +35,7 @@
     </td>
   </tr>
 </table>
-
+<% if Date.current <= @stage.date %>
+<%= link_to "公演内容の編集", :root %><br>
+  <% end %>
 <%= link_to "TOP", :root %>
