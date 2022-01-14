@@ -24,4 +24,12 @@ class StagesController < ApplicationController
 
   end
 
+  def new
+    @stage = Stage.find(params[:id])
+  end
+
+  def create
+
+  end
+
 end

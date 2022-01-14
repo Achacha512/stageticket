@@ -1,4 +1,5 @@
 class ReservationsController < ApplicationController
+  before_action :user_login_required, only: [:new]
 
   def index
     @reservations = current_user.reservations
@@ -41,6 +42,8 @@ class ReservationsController < ApplicationController
       if @errors.present?
         raise ActiveRecord::RecordInvalid
       end
+    rescue
+      p "予約できませんでした"
     ensure
       @errors = "予約完了しました" unless @errors.present?
       if @errors.instance_of?(Array)
