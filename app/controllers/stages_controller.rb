@@ -79,18 +79,23 @@ class StagesController < ApplicationController
 
   def edit
     @stage = Stage.find(params[:id])
-    p @s_price = @stage.seats.find_by("seat_type like ?" ,"%S%").seat_price
-    p @a_price = @stage.seats.find_by("seat_type like ?" ,"%A%").seat_price
-    p @b_price = @stage.seats.find_by("seat_type like ?" ,"%B%").seat_price
+    p 11111111111111
+    p @s_price = @stage.seats.find_by("seat_type like ?", "%S%").seat_price
+    p @a_price = @stage.seats.find_by("seat_type like ?", "%A%").seat_price
+    p @b_price = @stage.seats.find_by("seat_type like ?", "%B%").seat_price
   end
 
   def update
     @stage = Stage.find(params[:id])
     @stage.assign_attributes(params[:stage])
     if @stage.save
-      redirect_to "/stages/#{@stage.id}/actor_stage_show", notice: "公演情報を更新しました"
-    else
-      render "edit"
+      if cookies.signed[:actor_id]
+        redirect_to "/stages/#{@stage.id}/actor_stage_show", notice: "公演情報を更新しました"
+      elsif cookies.signed[:admin_id]
+        redirect_to :root, notice: "公演情報を更新しました"
+      else
+        render "edit"
+      end
     end
   end
 end
