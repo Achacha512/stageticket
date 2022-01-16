@@ -15,7 +15,7 @@ class ActorsController < ApplicationController
 
   def create
     @actor = Actor.new(params[:actor])
-    if @actor.save!
+    if @actor.save
       cookies.signed[:actor_id] = @actor.id
       redirect_to :root, notice: "団体会員登録を完了しました。"
     else

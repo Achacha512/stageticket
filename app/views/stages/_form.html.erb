@@ -1,3 +1,9 @@
+<% if @errors.present? %>
+  <% @errors.each do |error| %>
+    <%= error  %><br>
+  <% end %>
+<%end %>
+
 <% if @stage.status == 1 || @stage.status == 3 %>
   <table class="attr">
     <tr>
@@ -26,7 +32,7 @@
 
     <tr>
       <th>時間</th>
-      <td><%= form.select "time", options_for_select(%w[午前の部 午後の部]) %></td>
+      <td><%= form.select "time", options_for_select([["午前の部",1],["午後の部",2]]) %></td>
     </tr>
 
     <tr>

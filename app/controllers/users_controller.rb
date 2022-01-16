@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    if @user.save!
+    if @user.save
       cookies.signed[:user_id] = @user.id
       redirect_to :root, notice: "会員登録を完了しました。"
     else

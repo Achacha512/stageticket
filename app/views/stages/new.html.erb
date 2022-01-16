@@ -1,5 +1,16 @@
+<%# if @error.present? %>
+  <%# @error.each do |error| %>
+    <%#= error  %>
+  <%# end %>
+<%#end %>
+
 <h1>公演の申請</h1>
 <%= form_for @stage ,url:confirm_stages_path do |form| %>
   <%= render "form", form: form %>
-  <div><%= form.submit %></div>
+  <div><%= form.submit %></div><br>
 <% end %>
+
+<h2>申請時の注意</h2>
+<p>タイトルは1文字以上20文字以内で入力してください</p>
+<p>Textには10文字以上400以内で入力してください</p>
+<p>金額には自然数で入力してください</p>

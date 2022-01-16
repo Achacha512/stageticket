@@ -24,11 +24,11 @@
   end
 end
 
-1.upto(15) do |idx|
-  seat = Seat.find(rand(1..540))
-  reservation = Reservation.find(idx)
-  seat.update!(
-    reservation_id: reservation.id
-  )
-end
+# 1.upto(15) do |idx|
+#   seat = Seat.find(rand(1..540))
+#   reservation = Reservation.find(idx)
+#   seat.update!(
+#     reservation_id: reservation.id
+#   )
+# end
 
