@@ -19,12 +19,14 @@ Rails.application.routes.draw do
   resources :actors do
     get "actor_request_stages", on: :collection
     get "actor_past_stages", on: :collection
+    resources :stages do
+      get "admin_past_stages", on: :collection
+    end
 
   end
   resource :adminsessions
   resource :admin do
     get "admin_request_stages", on: :collection
-    get "admin_past_stages", on: :collection
   end
   resource :password
 

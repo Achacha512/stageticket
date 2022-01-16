@@ -1,0 +1,6 @@
+<h1>公演者一覧</h1>
+<%  @actors.each do |actor|  %>
+  <% @actor = actor.name %>
+  <%= link_to @actor, "/actors/#{actor.id}/stages/admin_past_stages"%>
+
+<% end %>

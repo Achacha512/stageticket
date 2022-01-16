@@ -55,4 +55,8 @@ class ActorsController < ApplicationController
     @past = current_actor.stages.where(status: [2, 3]).where("date < ?", Date.today)
   end
 
+  def index
+    @actors = Actor.all
+  end
+
 end

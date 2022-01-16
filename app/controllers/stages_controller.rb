@@ -98,4 +98,11 @@ class StagesController < ApplicationController
       end
     end
   end
+
+  def admin_past_stages#公演一覧
+    @stage = Stage.where(actor_id: params[:actor_id]).where("date >= ?", Date.today)
+    p @stage
+    @past = Stage.where(actor_id: params[:actor_id]).where("date < ?", Date.today)
+  end
+
 end
