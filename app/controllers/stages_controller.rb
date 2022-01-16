@@ -38,9 +38,11 @@ class StagesController < ApplicationController
   end
 
   def create
-    @s_seat = params[:s_price]
-    @a_seat = params[:a_price]
-    @b_seat = params[:b_price]
+    p 11111111111111111111111111
+    p @s_price = params[:s_price]
+    p @a_price = params[:a_price]
+    p @b_price = params[:b_price]
+
     @stage = Stage.new(params[:stage])
     @stage.actor_id = current_actor.id
     p current_actor.id
@@ -48,16 +50,16 @@ class StagesController < ApplicationController
 
     if @stage.save!
       6.times do |idx|
-        @seat = Seat.new(seat_type: "S#{idx}", stage_id: @stage.id, seat_price: @s_seat)
-        @seat.save
+        @seat = Seat.new(seat_type: "S#{idx}", stage_id: @stage.id, seat_price: @s_price)
+        @seat.save!
       end
       12.times do |idx|
-        @seat = Seat.new(seat_type: "A#{idx}", stage_id: @stage.id, seat_price: @a_seat)
-        @seat.save
+        @seat = Seat.new(seat_type: "A#{idx}", stage_id: @stage.id, seat_price: @a_price)
+        @seat.save!
       end
       12.times do |idx|
-        @seat = Seat.new(seat_type: "B#{idx}", stage_id: @stage.id, seat_price: @b_seat)
-        @seat.save
+        @seat = Seat.new(seat_type: "B#{idx}", stage_id: @stage.id, seat_price: @b_price)
+        @seat.save!
       end
       redirect_to :root, notice: "申請しました"
     else
@@ -67,9 +69,9 @@ class StagesController < ApplicationController
 
   def confirm
     @stage = Stage.new(params[:stage])
-    @s_price = params[:s_price]
-    @a_price = params[:a_price]
-    @b_price = params[:b_price]
+    @s_price = params[:s_price].to_i
+    @a_price = params[:a_price].to_i
+    @b_price = params[:b_price].to_i
     # if @stage.invalid?
     #   render "new"
     # end

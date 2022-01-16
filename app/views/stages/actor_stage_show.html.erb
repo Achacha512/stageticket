@@ -20,18 +20,18 @@
     <th>本文</th>
     <td><%= @stage.text %></td>
   </tr>
-<!--  <tr>-->
-<!--    <th>S席の価格</th>-->
-<!--    <td><%#= @stage.seats.find_by(seat_type: "%S%") %></td>-->
-<!--  </tr>-->
-<!--  <tr>-->
-<!--    <th>A席の価格</th>-->
-<!--    <td><%#= @stage.seats.seat_price %></td>-->
-<!--  </tr>-->
-<!--  <tr>-->
-<!--    <th>B席の価格</th>-->
-<!--    <td><%#= @stage.seats.seat_price %></td>-->
-<!--  </tr>-->
+  <tr>
+    <th>S席の価格</th>
+    <td><%= @stage.seats.find_by("seat_type like ?" ,"%S%").seat_price%></td>
+  </tr>
+  <tr>
+    <th>A席の価格</th>
+    <td><%= @stage.seats.find_by("seat_type like ?" ,"%A%").seat_price%></td>
+  </tr>
+  <tr>
+    <th>B席の価格</th>
+    <td><%= @stage.seats.find_by("seat_type like ?" ,"%B%").seat_price%></td>
+  </tr>
 
 
   <tr>

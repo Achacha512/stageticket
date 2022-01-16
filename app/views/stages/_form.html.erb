@@ -5,13 +5,13 @@
   </tr>
 
   <tr>
-    <th><%= form.label :Text%></th>
+    <th><%= form.label :Text %></th>
     <td><%= form.text_field :text, size: 15 %></td>
   </tr>
 
   <tr>
     <th>Category</th>
-    <td><%= form.select :category_id, {"恋愛系":1, "ファンタジー":2,"お笑い系":3,"ミュージカル":4,"オペラ":5} %></td>
+    <td><%= form.select :category_id, { "恋愛系": 1, "ファンタジー": 2, "お笑い系": 3, "ミュージカル": 4, "オペラ": 5 } %></td>
   </tr>
 
   <tr>
@@ -25,24 +25,23 @@
 
   <tr>
     <th>時間</th>
-    <td><%= form.select "time", options_for_select(%w[なし 午前の部 午後の部]) %></td>
+    <td><%= form.select "time", options_for_select(%w[午前の部 午後の部]) %></td>
   </tr>
 
   <tr>
     <th>S席金額</th>
-    <td><%= text_field_tag"s_price",params[:s_price],size:15 %></td>
+    <td><%= text_field_tag "s_price", params[:s_price], size: 15 %></td>
   </tr>
 
   <tr>
     <th>A席金額</th>
-    <td><%= text_field_tag"a_price",params[:a_price],size:15 %></td>
+    <td><%= text_field_tag "a_price", params[:a_price], size: 15 %></td>
   </tr>
 
   <tr>
     <th>B席金額</th>
-    <td><%= text_field_tag"b_price",params[:b_price],size:15 %></td>
+    <td><%= text_field_tag "b_price", params[:b_price], size: 15 %></td>
   </tr>
-
 
 
 </table>
