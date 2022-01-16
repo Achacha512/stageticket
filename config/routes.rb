@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root "stages#index"
   resources :stages do
+    post "confirm", on: :collection
     get "search", on: :collection
     member do
       get :admin_stage_show

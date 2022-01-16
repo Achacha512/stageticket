@@ -1,8 +1,7 @@
 <h1>公演情報の詳細</h1>
 <% if @stages.present? %>
   <% @stages.each do |stage| %>
-
-    <table class="attr">
+      <table class="attr">
       <tr>
         <th>タイトル</th>
         <td><%= link_to stage.title , "/stages/#{stage.id}/actor_stage_show" %></td>

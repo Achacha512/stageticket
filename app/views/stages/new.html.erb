@@ -1,0 +1,5 @@
+<h1>公演の申請</h1>
+<%= form_for @stage ,url:confirm_stages_path do |form| %>
+  <%= render "form", form: form %>
+  <div><%= form.submit %></div>
+<% end %>

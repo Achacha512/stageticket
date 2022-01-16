@@ -4,6 +4,14 @@ class Stage < ApplicationRecord
   belongs_to :actor
   belongs_to :category
 
+  # validates :title,
+  #           length: {minimum: 1, maximum: 20}
+  #
+  # validates :text,
+  #           length: {minimum: 10,maximum: 400}
+
+
+
   class << self
     def search(title, actor, date, category, time)
       rel = order("date").where(status: 2).where("date >= ?", Date.today)
