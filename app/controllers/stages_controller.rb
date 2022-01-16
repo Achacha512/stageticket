@@ -80,15 +80,15 @@ class StagesController < ApplicationController
 
 
     if @stage.save
-      6.times do |idx|
+      for idx in 1..6 do
         @seat = Seat.new(seat_type: "S#{idx}", stage_id: @stage.id, seat_price: @s_price)
         @seat.save
       end
-      12.times do |idx|
+      for idx in 1..12 do
         @seat = Seat.new(seat_type: "A#{idx}", stage_id: @stage.id, seat_price: @a_price)
         @seat.save
       end
-      12.times do |idx|
+      for idx in 1..12 do
         @seat = Seat.new(seat_type: "B#{idx}", stage_id: @stage.id, seat_price: @b_price)
         @seat.save
       end
