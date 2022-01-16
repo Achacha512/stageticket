@@ -1,47 +1,60 @@
-<table class="attr">
-  <tr>
-    <th><%= form.label :タイトル %></th>
-    <td><%= form.text_field :title, size: 15 %></td>
-  </tr>
+<% if @stage.status == 1 || @stage.status == 3 %>
+  <table class="attr">
+    <tr>
+      <th><%= form.label :タイトル %></th>
+      <td><%= form.text_field :title, size: 15 %></td>
+    </tr>
 
-  <tr>
-    <th><%= form.label :Text %></th>
-    <td><%= form.text_field :text, size: 15 %></td>
-  </tr>
+    <tr>
+      <th><%= form.label :Text %></th>
+      <td><%= form.text_field :text, size: 15 %></td>
+    </tr>
 
-  <tr>
-    <th>Category</th>
-    <td><%= form.select :category_id, { "恋愛系": 1, "ファンタジー": 2, "お笑い系": 3, "ミュージカル": 4, "オペラ": 5 } %></td>
-  </tr>
+    <tr>
+      <th>Category</th>
+      <td><%= form.select :category_id, { "恋愛系": 1, "ファンタジー": 2, "お笑い系": 3, "ミュージカル": 4, "オペラ": 5 } %></td>
+    </tr>
 
-  <tr>
-    <th>日付</th>
-    <td>
-      <%= form.date_select :date,
-                           start_year: 2021, end_year: 2022,
-                           use_month_numbers: true %>
-    </td>
-  </tr>
+    <tr>
+      <th>日付</th>
+      <td>
+        <%= form.date_select :date,
+                             start_year: 2021, end_year: 2022,
+                             use_month_numbers: true %>
+      </td>
+    </tr>
 
-  <tr>
-    <th>時間</th>
-    <td><%= form.select "time", options_for_select(%w[午前の部 午後の部]) %></td>
-  </tr>
+    <tr>
+      <th>時間</th>
+      <td><%= form.select "time", options_for_select(%w[午前の部 午後の部]) %></td>
+    </tr>
 
-  <tr>
-    <th>S席金額</th>
-    <td><%= text_field_tag "s_price", params[:s_price], size: 15 %></td>
-  </tr>
+    <tr>
+      <th>S席金額</th>
+      <td><%= text_field_tag "s_price", @s_price, size: 15 %></td>
+    </tr>
 
-  <tr>
-    <th>A席金額</th>
-    <td><%= text_field_tag "a_price", params[:a_price], size: 15 %></td>
-  </tr>
+    <tr>
+      <th>A席金額</th>
+      <td><%= text_field_tag "a_price", @a_price, size: 15 %></td>
+    </tr>
 
-  <tr>
-    <th>B席金額</th>
-    <td><%= text_field_tag "b_price", params[:b_price], size: 15 %></td>
-  </tr>
+    <tr>
+      <th>B席金額</th>
+      <td><%= text_field_tag "b_price", @b_price, size: 15 %></td>
+    </tr>
+  </table>
 
+<% elsif @stage.status == 2 %>
+  <table class="attr">
+    <tr>
+      <th><%= form.label :タイトル %></th>
+      <td><%= form.text_field :title, size: 15 %></td>
+    </tr>
 
-</table>
+    <tr>
+      <th><%= form.label :Text %></th>
+      <td><%= form.text_field :text, size: 15 %></td>
+    </tr>
+  </table>
+<% end %>

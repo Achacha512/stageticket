@@ -79,20 +79,12 @@ class StagesController < ApplicationController
 
   def edit
     @stage = Stage.find(params[:id])
+    p @s_price = @stage.seats.find_by("seat_type like ?" ,"%S%").seat_price
+    p @a_price = @stage.seats.find_by("seat_type like ?" ,"%A%").seat_price
+    p @b_price = @stage.seats.find_by("seat_type like ?" ,"%B%").seat_price
   end
 
   def update
-    # if @stage.status == 1
-    #   @stage = Stage.find(params[:id])
-    #   @stage.assign_attributes(params[:stage])
-    #   if @stage.save
-    #     redirect_to "/stages/#{@stage.id}/actor_stage_show", notice: "公演情報を更新しました"
-    #   else
-    #     render "edit"
-    #   end
-    # elsif @stage.status == 2||3
-    #
-    # end
     @stage = Stage.find(params[:id])
     @stage.assign_attributes(params[:stage])
     if @stage.save
