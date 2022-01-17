@@ -2,5 +2,10 @@
 
 <%= form_for @user do |form| %>
   <%= render "form", form: form %>
-  <div><%= form.submit %></div>
+  <div><%= form.submit %></div><br>
 <% end %>
+
+<h2>会員登録時の注意</h2>
+<p>名前は2文字以上20文字以内で登録してください</p>
+<p>login IDは4文字以上16文字以内の英数字を入力してください</p>
+<p>パスワードは4文字以上16文字以内の英数字を入力してください</p>

@@ -33,7 +33,7 @@ class ActorsController < ApplicationController
     if @actor.save
       redirect_to @actor, notice: "団体情報を変更しました"
     else
-      render edit
+      render "edit"
     end
 
   end

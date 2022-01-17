@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to @user, notice: "会員情報を変更しました"
     else
-      render edit
+      render "edit"
     end
 
   end

@@ -49,33 +49,33 @@ class StagesController < ApplicationController
     p current_actor.id
     p params[:stage]
 
-    if @stage_title.nil?
-      @errors << "タイトルを規定通りに入力してください"
-    end
-
-    if @stage_text.nil?
-      @errors << "Textを規定通りに入力してください"
-    end
-
-    if @stage.date < Date.current.days_since(2)
-      @errors << "公演日は今日より3日以降に設定してください"
-    end
-
-    unless Stage.where.not(id:@stage.id).where(date:@stage.date,time:@stage.time).count == 0
-      @errors << "その日は予約が入っています。違う日時を指定してください"
-    end
-
-    if @s_price == 0
-      @errors << "S席の金額を規定通りに入力してください"
-    end
-
-    if @a_price == 0
-      @errors << "A席の金額を規定通りに入力してください"
-    end
-
-    if @b_price == 0
-      @errors << "B席の金額を規定通りに入力してください"
-    end
+    # if @stage_title.nil?
+    #   @errors << "タイトルを規定通りに入力してください"
+    # end
+    #
+    # if @stage_text.nil?
+    #   @errors << "Textを規定通りに入力してください"
+    # end
+    #
+    # if @stage.date < Date.current.days_since(2)
+    #   @errors << "公演日は今日より3日以降に設定してください"
+    # end
+    #
+    # unless Stage.where.not(id:@stage.id).where(date:@stage.date,time:@stage.time).count == 0
+    #   @errors << "その日は予約が入っています。違う日時を指定してください"
+    # end
+    #
+    # if @s_price == 0
+    #   @errors << "S席の金額を規定通りに入力してください"
+    # end
+    #
+    # if @a_price == 0
+    #   @errors << "A席の金額を規定通りに入力してください"
+    # end
+    #
+    # if @b_price == 0
+    #   @errors << "B席の金額を規定通りに入力してください"
+    # end
 
 
 
