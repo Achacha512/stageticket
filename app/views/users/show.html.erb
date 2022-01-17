@@ -4,4 +4,4 @@
 <h2><%=link_to "予約一覧" , [@user, :reservations] %></h2>
 <h2><%=link_to "アカウント編集" , [:edit , @user] %></h2>
 <h2><%=link_to "パスワード編集" , :edit_password %></h2>
-<h2><%=link_to "退会" , @user, method: :delete, data: { confirm: "本当に退会しますか？"} %></h2>
+<h2><%=link_to "退会" , current_user, method: :delete, data: { confirm: "本当に退会しますか？"} %></h2>

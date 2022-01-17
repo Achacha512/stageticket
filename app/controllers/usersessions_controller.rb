@@ -12,6 +12,8 @@ class UsersessionsController < ApplicationController
 
   def destroy
     cookies.delete(:user_id)
+    cookies.delete(:actor_id)
+    cookies.delete(:admin_id)
     redirect_to :root
   end
 

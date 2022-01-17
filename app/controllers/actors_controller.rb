@@ -40,8 +40,10 @@ class ActorsController < ApplicationController
 
   def destroy
     @actor = Actor.find(params[:id])
+    cookies.delete(:user_id)
+    cookies.delete(:actor_id)
+    cookies.delete(:admin_id)
     @actor.destroy
-    cookies.delete(name: actor_id)
     redirect_to :root, notice: "退会しました。"
   end
 

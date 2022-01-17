@@ -5,5 +5,5 @@
 <h2><%=link_to "公演作品一覧", "/actors/actor_past_stages" %></h2>
 <h2><%=link_to "アカウント編集" , [:edit , @actor] %></h2>
 <h2><%=link_to "パスワード編集" , :edit_password %></h2>
-<h2><%=link_to "退会" , @actor, method: :delete, data: { confirm: "本当に退会しますか？"} %></h2>
+<h2><%=link_to "退会" , current_actor, method: :delete, data: { confirm: "本当に退会しますか？"} %></h2>
 

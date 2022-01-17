@@ -30,4 +30,6 @@ Rails.application.routes.draw do
   end
   resource :password
 
+  resource :session
+
 end

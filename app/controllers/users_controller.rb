@@ -40,8 +40,10 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
+    cookies.delete(:user_id)
+    cookies.delete(:actor_id)
+    cookies.delete(:admin_id)
     @user.destroy
-    cookies.delete(name: user_id)
     redirect_to :root, notice: "退会しました。"
   end
 
