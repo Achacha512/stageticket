@@ -4,21 +4,21 @@ class Stage < ApplicationRecord
   belongs_to :actor
   belongs_to :category
 
-  # validates :title, presence: true,
-  #           length: {minimum: 1, maximum: 20}
-  #
-  # validates :text, presence: true,
-  #           length: {minimum: 10,maximum: 400}
-  #
-  # validate do
-  #   if date < Date.current.days_since(2)
-  #     errors.add(:date, "公演日は今日より3日以降に設定してください")
-  #   end
-  #   unless Stage.where.not(id:id).where(date:date,time:time).count == 0
-  #     errors.add(:date,"その日は予約が入っています。違う日時を指定してください")
-  #   end
-  #
-  # end
+  validates :title, presence: true,
+            length: {minimum: 1, maximum: 20}
+
+  validates :text, presence: true,
+            length: {minimum: 10,maximum: 400}
+
+  validate do
+    if date < Date.current.days_since(2)
+      errors.add(:date, "公演日は今日より3日以降に設定してください")
+    end
+    unless Stage.where.not(id:id).where(date:date,time:time).count == 0
+      errors.add(:date,"その日は予約が入っています。違う日時を指定してください")
+    end
+
+  end
 
 
 
@@ -29,14 +29,14 @@ class Stage < ApplicationRecord
         rel = rel.where("title LIKE ?", "%#{title}%")
       end
       if date.present?
-        rel = rel.where("date LIKE ?", "%#{date}%")
+        rel = rel.where(date: query[2])
       end
       if actor.present?
-        actor = Actor.where("name LIKE ? ","%#{actor}%").ids
+        actor = Actor.where(name:query[1]).ids
         rel = rel.where(actor_id:actor)
       end
       if category.present? && category != "なし"
-        category = Category.where("name LIKE ? ","%#{category}%").ids
+        category = Category.where(category_id:query[4]).ids
         rel = rel.where(category_id:category)
       end
       if time.present? && time != "なし"
