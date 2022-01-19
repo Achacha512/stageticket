@@ -29,14 +29,14 @@ class Stage < ApplicationRecord
         rel = rel.where("title LIKE ?", "%#{title}%")
       end
       if date.present?
-        rel = rel.where(date: query[2])
+        rel = rel.where(date:date)
       end
       if actor.present?
-        actor = Actor.where(name:query[1]).ids
+        actor = Actor.where(name:actor).ids
         rel = rel.where(actor_id:actor)
       end
       if category.present? && category != "なし"
-        category = Category.where(category_id:query[4]).ids
+        category = Category.where(name:category).ids
         rel = rel.where(category_id:category)
       end
       if time.present? && time != "なし"
