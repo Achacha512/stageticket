@@ -127,6 +127,8 @@ class StagesController < ApplicationController
       else
         render "edit"
       end
+    else
+      render "edit"
     end
   end
 

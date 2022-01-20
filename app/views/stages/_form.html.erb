@@ -51,6 +51,7 @@
       <td><%= text_field_tag "b_price", @b_price, size: 15 %></td>
     </tr>
   </table>
+  <div><%= form.hidden_field :status, :value => 1 %></div>
 
 <% elsif @stage.status == 2 %>
   <table class="attr">
