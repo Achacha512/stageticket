@@ -15,7 +15,7 @@ class ReservationsController < ApplicationController
     @errors = []
 
     if params["seat"].nil?
-      redirect_to "/stages/#{stage.id}/reservations/new", notice: "座席を選択してください"
+      redirect_to "/stages/#{@stage.id}/reservations/new", notice: "座席を選択してください"
 
     else
 
