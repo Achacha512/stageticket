@@ -49,8 +49,8 @@ class ReservationsController < ApplicationController
         if @errors.present?
           raise ActiveRecord::RecordInvalid
         end
-      rescue
-        p "予約できませんでした"
+      rescue => e
+        p e
       ensure
         @errors = "予約完了しました" unless @errors.present?
         if @errors.instance_of?(Array)
