@@ -13,9 +13,9 @@ class ReservationsController < ApplicationController
   def create
 
     @errors = []
+
     if params["seat"].nil?
-      p @errors << "座席を選択してください"
-      redirect_to :root, notice: @errors
+      redirect_to :root, notice: "座席を選択してください"
 
     else
 
