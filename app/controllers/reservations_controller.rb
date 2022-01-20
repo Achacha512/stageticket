@@ -13,13 +13,13 @@ class ReservationsController < ApplicationController
   def create
 
     @errors = []
+    @stage = Stage.find(params[:stage_id])
 
     if params["seat"].nil?
       redirect_to "/stages/#{@stage.id}/reservations/new", notice: "座席を選択してください"
 
     else
 
-      @stage = Stage.find(params[:stage_id])
       @stage_types = params["seat"]["seat_type"]
       p @stage
       p @stage_types
