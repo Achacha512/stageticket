@@ -50,7 +50,7 @@
 
 <%= form_for [@stage, @reservation] do |form| %>
   <h1>座席表</h1>
-  <%= collection_check_boxes(:seat, :seat_type, @stage.seats, :seat_type, :seat_type, include_hidden: false) %>
+  <%= collection_check_boxes(:seat, :seat_type, @stage.seats.order("id"), :seat_type, :seat_type, include_hidden: false) %>
   <div><%= form.submit %></div>
 <% end %>
 
