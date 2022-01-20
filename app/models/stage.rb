@@ -11,7 +11,7 @@ class Stage < ApplicationRecord
             length: {minimum: 10,maximum: 400}
 
   validate do
-    if date < Date.current.days_since(2)
+    if date < Date.current+3
       errors.add(:date, "公演日は今日より3日以降に設定してください")
     end
     unless Stage.where.not(id:id).where(date:date,time:time).count == 0

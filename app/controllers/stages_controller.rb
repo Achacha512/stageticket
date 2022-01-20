@@ -65,17 +65,17 @@ class StagesController < ApplicationController
     #   @errors << "その日は予約が入っています。違う日時を指定してください"
     # end
     #
-    # if @s_price == 0
-    #   @errors << "S席の金額を規定通りに入力してください"
-    # end
-    #
-    # if @a_price == 0
-    #   @errors << "A席の金額を規定通りに入力してください"
-    # end
-    #
-    # if @b_price == 0
-    #   @errors << "B席の金額を規定通りに入力してください"
-    # end
+    if @s_price == 0|| @s_price<0
+      @errors << "S席の金額を規定通りに入力してください"
+    end
+
+    if @a_price == 0|| @a_price<0
+      @errors << "A席の金額を規定通りに入力してください"
+    end
+
+    if @b_price == 0|| @b_price<0
+      @errors << "B席の金額を規定通りに入力してください"
+    end
 
 
 
