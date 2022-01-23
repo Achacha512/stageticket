@@ -46,6 +46,7 @@ class ReservationsController < ApplicationController
           @errors << @reservation.errors.full_message
         end
         if @errors.present?
+          p @errors
           raise ActiveRecord::RecordInvalid
         end
 
