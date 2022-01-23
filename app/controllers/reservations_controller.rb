@@ -24,7 +24,6 @@ class ReservationsController < ApplicationController
       p @stage
       p @stage_types
 
-      ActiveRecord::Base.transaction do
         @reservation = Reservation.new(user_id: cookies.signed[:user_id], stage_id: Stage.find(params[:stage_id]).id)
         @s_seat = Seat.where("seat_type like ?", "%S%").where(stage_id: params[:stage_id], reservation_id: nil)
         @a_seat = Seat.where("seat_type like ?", "%A%").where(stage_id: params[:stage_id], reservation_id: nil)
@@ -44,21 +43,18 @@ class ReservationsController < ApplicationController
             @seat.save
           end
         else
-          # @errors << @reservation.errors.full_message
+          @errors << @reservation.errors.full_message
         end
         if @errors.present?
           raise ActiveRecord::RecordInvalid
         end
-      rescue => e
-        p e
-      ensure
+
         @errors = "予約完了しました" unless @errors.present?
         if @errors.instance_of?(Array)
           render "new"
         else
-          redirect_to :root, notice: @errors
+          redirect_to root_path, notice: @errors
         end
-      end
     end
   end
 
