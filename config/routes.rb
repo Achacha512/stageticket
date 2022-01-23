@@ -7,12 +7,12 @@ Rails.application.routes.draw do
       get :admin_stage_show
       get :actor_stage_show
     end
-    resources :reservations,except: [:update]
+    resources :reservations
   end
 
   resource :usersessions
   resources :users do
-    resources :reservations,except: [:update]
+    resources :reservations
   end
   resource :actorsessions
 

@@ -52,7 +52,7 @@ class ReservationsController < ApplicationController
 
         @errors = "予約完了しました" unless @errors.present?
         if @errors.instance_of?(Array)
-          render "new"
+          redirect_to ({action: :new}), notice: @errors
         else
           redirect_to root_path, notice: @errors
         end
