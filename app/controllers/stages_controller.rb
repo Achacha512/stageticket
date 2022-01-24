@@ -126,4 +126,8 @@ class StagesController < ApplicationController
     @past = Stage.where(actor_id: params[:actor_id]).where("date < ?", Date.today)
   end
 
+  def stage_params
+    params.require(:stage).permit(:actor_id,:category_id,:title,:date,:time,:text,:status, seats_attributes:[:id, :reservation_id, :stage_id, :seat_type, :seat_price])
+  end
+
 end
