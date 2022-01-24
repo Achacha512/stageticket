@@ -44,27 +44,6 @@ class StagesController < ApplicationController
     p @a_price = params[:a_price].to_i
     p @b_price = params[:b_price].to_i
 
-    @stage = Stage.new(params[:stage])
-    @stage.actor_id = current_actor.id
-    p current_actor.id
-    p params[:stage]
-
-    # if @stage_title.nil?
-    #   @errors << "タイトルを規定通りに入力してください"
-    # end
-    #
-    # if @stage_text.nil?
-    #   @errors << "Textを規定通りに入力してください"
-    # end
-    #
-    # if @stage.date < Date.current.days_since(2)
-    #   @errors << "公演日は今日より3日以降に設定してください"
-    # end
-    #
-    # unless Stage.where.not(id:@stage.id).where(date:@stage.date,time:@stage.time).count == 0
-    #   @errors << "その日は予約が入っています。違う日時を指定してください"
-    # end
-    #
     if @s_price == 0|| @s_price<0
       @errors << "S席の金額を規定通りに入力してください"
     end
@@ -77,9 +56,18 @@ class StagesController < ApplicationController
       @errors << "B席の金額を規定通りに入力してください"
     end
 
+    @stage = Stage.new(params[:stage])
+    @stage.actor_id = current_actor.id
+    p current_actor.id
+    p params[:stage]
+
+    if @stage.title.nil?
+      @errors << "タイトルを記入してください"
+    end
 
 
-    if @stage.save
+
+    if @stage.save && @errors.empty?
       for idx in 1..6 do
         @seat = Seat.new(seat_type: "S#{idx}", stage_id: @stage.id, seat_price: @s_price)
         @seat.save
@@ -94,8 +82,8 @@ class StagesController < ApplicationController
       end
       redirect_to :root, notice: "申請しました"
     else
-      @error = @stage.errors.full_messages
-      render "new"
+      @errors << @stage.errors.full_messages
+      redirect_to ({action: :new}), notice: @errors
     end
   end
 

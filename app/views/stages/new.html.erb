@@ -1,8 +1,9 @@
-<%# if @error.present? %>
-  <%# @error.each do |error| %>
-    <%#= error  %>
-  <%# end %>
-<%#end %>
+<%= render "shared/errors",obj: @stage %>
+<% if @errors.present? %>
+  <% @errors.each do |error| %>
+    <%= error  %><br>
+  <% end %>
+<%end %>
 
 <h1>公演の申請</h1>
 <%= form_for @stage ,url:confirm_stages_path do |form| %>
