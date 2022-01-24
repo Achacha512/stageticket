@@ -4,21 +4,21 @@ class Stage < ApplicationRecord
   belongs_to :actor
   belongs_to :category
 
-  validates :title, presence: true,
-            length: {minimum: 1, maximum: 20}
-
-  validates :text, presence: true,
-            length: {minimum: 10,maximum: 400}
-
-  validate do
-    if date < Date.current+3
-      errors.add(:date, "公演日は今日より3日以降に設定してください")
-    end
-    unless Stage.where.not(id:id).where(date:date,time:time).count == 0
-      errors.add(:date,"その日は予約が入っています。違う日時を指定してください")
-    end
-
-  end
+  # validates :title, presence: true,
+  #           length: {minimum: 1, maximum: 20}
+  #
+  # validates :text, presence: true,
+  #           length: {minimum: 10,maximum: 400}
+  #
+  # validate do
+  #   if date < Date.current+3
+  #     errors.add(:date, "公演日は今日より3日以降に設定してください")
+  #   end
+  #   unless Stage.where.not(id:id).where(date:date,time:time).count == 0
+  #     errors.add(:date,"その日は予約が入っています。違う日時を指定してください")
+  #   end
+  #
+  # end
 
 
 
