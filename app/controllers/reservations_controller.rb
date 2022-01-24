@@ -54,7 +54,7 @@ class ReservationsController < ApplicationController
         if @errors.instance_of?(Array)
           redirect_to ({action: :new}), notice: @errors
         else
-          redirect_to root_path, notice: @errors
+          redirect_to "/users/#{current_user.id}/reservations/#{@reservation.id}", notice: @errors
         end
     end
   end
