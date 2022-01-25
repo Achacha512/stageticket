@@ -107,17 +107,31 @@ class StagesController < ApplicationController
   def update
     @stage = Stage.find(params[:id])
     @stage.assign_attributes(params[:stage])
-    if @stage.save
-      if cookies.signed[:actor_id]
-        redirect_to "/stages/#{@stage.id}/actor_stage_show", notice: "公演情報を更新しました"
-      elsif cookies.signed[:admin_id]
-        redirect_to :root, notice: "公演情報を更新しました"
-      else
+    @price =[params[:s_price],params[:a_price],params[:b_price]]
+      if @stage.status != 2
+        if @stage.invalid? || @stage.price_vali(@price)#問題があった時
         render "edit"
+        else
+          @stage.save#ステージ保存
+          @stage.seat_price(@price)#関連付いているシートモデルの保存
+          if cookies.signed[:actor_id]
+            redirect_to "/stages/#{@stage.id}/actor_stage_show", notice: "公演情報を更新しました"
+          elsif cookies.signed[:admin_id]
+            redirect_to :root, notice: "公演情報を更新しました"
+          end
+        end
+      else
+        if @stage.invalid?
+          render "edit"
+        else
+          @stage.save#ステージ保存
+          if cookies.signed[:actor_id]
+            redirect_to "/stages/#{@stage.id}/actor_stage_show", notice: "公演情報を更新しました"
+          elsif cookies.signed[:admin_id]
+            redirect_to :root, notice: "公演情報を更新しました"
+          end
+        end
       end
-    else
-      render "edit"
-    end
   end
 
   def admin_past_stages#公演一覧

@@ -10,7 +10,8 @@ class Stage < ApplicationRecord
   validates :text, presence: true,
             length: {minimum: 10,maximum: 400}
 
-  validate do
+
+validate do
     if date < Date.current+3
       errors.add(:date, "公演日は今日より3日以降に設定してください")
     end
@@ -18,6 +19,34 @@ class Stage < ApplicationRecord
       errors.add(:date,"その日は予約が入っています。違う日時を指定してください")
     end
 
+  end
+
+  def seat_price(price)
+
+    seats = self.seats.order("id")
+    seats[0..5].each do |seat|
+      seat.seat_price = price[0]#S席
+      seat.save
+    end
+    seats[6..17].each do |seat|
+      seat.seat_price = price[1]#A席
+      seat.save
+    end
+    seats[18..29].each do |seat|
+      seat.seat_price = price[2]#B席
+      seat.save
+    end
+  end
+
+  def price_vali(price)
+    price.each do |p|
+      p=p.to_i
+      unless p>0
+        errors.add(:price,"金額が正しくありません")
+        return true
+      end
+    end
+    return false
   end
 
 
