@@ -38,16 +38,16 @@ validate do
     end
   end
 
-  # def price_vali(price)
-  #   price.each do |p|
-  #     p=p.to_i
-  #     unless p>0
-  #       errors.add(:price,"金額が正しくありません")
-  #       return true
-  #     end
-  #   end
-  #   return false
-  # end
+  def price_vali(price)
+    price.each do |p|
+      p=p.to_i
+      unless p>0
+        errors.add(:price,"金額が正しくありません")
+        return true
+      end
+    end
+    return false
+  end
 
 
 
