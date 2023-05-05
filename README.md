@@ -1,23 +1,40 @@
 # README
 
-これは
+# 舞台予約システム
 
-Things you may want to cover:
+使用した言語：Ruby
 
-* Ruby version
+このシステムはアクターをユーザー(観覧者)、公演団体(舞台の公演をする団体)、管理者とした。
 
-* System dependencies
+主な機能は以下の通りである。
 
-* Configuration
+＊　ユーザー
+・　アカウント登録機能
+・　アカウント登録情報編集機能
+・　ログイン、ログアウト機能
+・　公演情報検索、詳細確認機能
+・　公演予約機能
+・　予約情報確認機能
+・　予約キャンセル機能
+・　アカウント削除機能
 
-* Database creation
+＊　公演団体
+・　アカウント登録機能
+・　アカウント登録情報編集機能
+・　ログイン、ログアウト機能
+・　公演情報検索、詳細確認機能
+・　公演情報登録申請機能
+・　公演情報編集機能
+・　申請結果参照機能
+・　公演予約状況確認機能
+・　アカウント削除機能
 
-* Database initialization
+＊　管理者
+・　ログイン、ログアウト機能
+・　公演情報検索、詳細確認機能
+・　公演予約状況確認機能
+・ 登録申請確認機能
+・　公演団体一覧確認機能
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
-
-* ...
