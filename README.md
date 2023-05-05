@@ -29,7 +29,9 @@
 ![ユーザー画面](https://github.com/Achacha512/stageticket/blob/master/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202023-05-05%2023.58.48.png)
 
 公演情報検索、詳細確認機能画面
-![ユーザー画面]()
+![ユーザー画面](https://github.com/Achacha512/stageticket/blob/master/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202023-05-05%2023.59.04.png)
+
+予約画面
 
 
 
